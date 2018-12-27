@@ -98,7 +98,7 @@ export default class Manage extends Component {
   }
 
   confirm = () => {
-    const {prizeName, prizeType, oldName} = this.state;
+    const {prizeName, prizeType, oldName, userName} = this.state;
     if (prizeName !== '' || prizeType !== '' || (prizeType <= 3 && prizeType >= 1))
       Taro.request({
         url: 'https://www.algbb.fun/luckDraw/setPrize',
@@ -116,7 +116,7 @@ export default class Manage extends Component {
           prizeName: '',
           prizeType: ''
         }, () => {
-          Taro.redirectTo({url: '/pages/index/dashBoard/manage'})
+          Taro.redirectTo({url: `/pages/index/dashBoard/manage?userName=${userName}`})
           // Taro.navigateTo({
           //   url: '/pages/index/dashBoard/manage'
           // })
@@ -184,6 +184,7 @@ export default class Manage extends Component {
       })
 
       this.setState({
+        oldName: '',
         newName: '',
         prizeInfo: prize,
         isDisplayed: false

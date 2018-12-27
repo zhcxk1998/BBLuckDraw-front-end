@@ -190,8 +190,14 @@ export default class Main extends Component {
     }
   }
 
+  back = () => {
+    Taro.redirectTo({
+      url: '/pages/index/login'
+    })
+  }
+
   render() {
-    const {value, current, userName, userInfo, prizeInfo, isLoading, isOpened, isDisplayed, isDrawed, myInfo, drawOpened, drawName, drawType, drawUser,myName} = this.state;
+    const {value, current, userName, userInfo, prizeInfo, isLoading, isOpened, isDisplayed, isDrawed, myInfo, drawOpened, drawName, drawType, drawUser, myName} = this.state;
     return !isLoading ? (
       <View>
         <View className='main'>
@@ -418,7 +424,7 @@ export default class Main extends Component {
                   />
                 </AtList>
               </View>
-              <Button className='quit'>退出登录</Button>
+              <Button className='quit' onClick={this.back}>退出登录</Button>
             </View>
           </View>
         </View>
